@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=\, initial-scale=1.0">
+    <title>View My Book Notes</title>
+    <style>
+        body{
+            background-color: #EEF7FF;
+            color: #4D869C;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+        }
+        img{
+            border: 5px dashed #7AB2B2;
+        }
+        div{
+            border: 7px solid #CDE8E5;
+        }
+    </style>
+</head>
+<body>
+    <div><img src="<%=link%>" alt="Cover page" height="200" width="200" /></div>
+    
+    <h1><b>Date:</b>  <%=date%></h1>
+    <h2><b>Rating:</b>  <%=rating%>/10</h2>
+    <h2><b>Your notes:</b><br><%=notes%></h2>
+</body>
+</html>

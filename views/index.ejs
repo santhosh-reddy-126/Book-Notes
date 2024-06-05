@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Readerly</title>
+    <link href="/style.css" rel="stylesheet" />
+    <style>
+        #list{
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        button{
+            background-color: #EEF7FF;
+            color: #4D869C;
+            border: 0px;
+            padding: 5px;
+        }
+        a{
+            text-decoration: none;
+            color: #EEF7FF;
+        }
+    </style>
+</head>
+<body>
+    <div id="nav">
+        <img src="https://t4.ftcdn.net/jpg/01/66/55/01/360_F_166550191_hEVqAvFjIbRMZNDTaBoi0j7fX7ynPS5x.jpg" height="100" width="100" />
+        <h1>Readerly</h1>
+        <form method="POST" action="/add">
+            <input type="submit" value="ADD A NEW BOOK" id="ADD"/>
+        </form>
+    </div>
+    <div id="intro">
+        <p>I read a lot of books but after I finish reading them I often don't remember all the most salient parts of the book. So I started taking notes. This capstone project is built on this idea. In this website, I Record all non-fiction books read by me, my notes, my ratings and when i read them. The books are sortable by rating, recency and title.</p>
+    </div>
+    <div id="list">
+        <form method="POST" action="/title">
+            <button id="title" type="submit">Sort by title</button>
+        </form>
+        <form method="POST" action="/date">
+            <button id="date" type="submit">Sort by recency</button>
+        </form>
+        <form method="POST" action="/rating">
+            <button id="rating" type="submit">Sort by rating</button>
+        </form>
+    </div>
+    <% books.forEach((book) => {%>
+        <div class="bookitem">
+        <img src="<%=book.link%>" alt="Cover page" height="200" width="200"/>
+        <div class="details">
+            <h3>Date: <%=book.date%></h3>
+            <h3>Rating: <%=book.rating%>/10</h3>
+            <form method="POST" action="/editNotes">
+                <input name="Id" value="<%=book.id%>" type="hidden"/>
+                <h4 id="realn<%=book.id%>"><%=book.notes.slice(0,200)%>  <a href="full<%=book.id%>">Read more....</a></h4>
+                <button id="realbn<%=book.id%>" onclick="vanish('<%=book.id%>','n')" type="button">EDIT</button>
+                <textarea name="new" type="text" id="unrealn<%=book.id%>" hidden><%=book.notes%></textarea><br>
+                <button id="unrealbn<%=book.id%>" hidden type="submit" onclick="bringback('<%=book.id%>','n')">SAVE</button>
+            </form>
+            
+            
+        </div>
+        </div>
+    <%});%>
+   <script>
+    function vanish(id,type){
+        document.getElementById("real"+type+id).setAttribute("hidden","hidden");
+        document.getElementById("realb"+type+id).setAttribute("hidden","hidden");
+        document.getElementById("unreal"+type+id).removeAttribute("hidden");
+        document.getElementById("unrealb"+type+id).removeAttribute("hidden");
+    }
+    function bringback(id,type){
+        document.getElementById("real"+type+id).removeAttribute("hidden");
+        document.getElementById("realb"+type+id).removeAttribute("hidden");
+        document.getElementById("unreal"+type+id).setAttribute("hidden","hidden");
+        document.getElementById("unrealb"+type+id).setAttribute("hidden","hidden");
+    }
+
+   </script>
+</body>
+</html>

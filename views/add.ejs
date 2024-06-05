@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add a Book</title>
+    <style>
+        body{
+            background-color: #7AB2B2;
+            color: #EEF7FF;
+        }
+        input,textarea{
+            background-color: #4D869C;
+            color: #CDE8E5;
+            width: 90%;
+            height: 80px;
+            border-radius: 8%;
+            border: none;
+            font-size: 60px;
+        }
+        form{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+        }
+        #sub{
+            width: 150px;
+            height: 50px;
+            border-radius: 5%;
+            font-size: 20px;
+        }
+        h1{
+            text-align: center;
+            background-color: #4D869C;
+        }
+        label{
+            font-size: larger;
+        }
+    </style>
+</head>
+<body>
+    <h1>ADD THIS BOOK FORM</h1>
+    <form method="POST" action="/new">
+        <label for="isbn">ISBN:</label>
+        <input type="text" id="isbn" name="isbn"/>
+        <label for="date">Date(yyyy-mm-dd):</label>
+        <input type="text" id="date" name="date"/>
+        <label for="rate">Rating(Out of 10):</label>
+        <input type="number" id="rate" name="rate"/>
+        <label for="note">Notes:</label>
+        <textarea id="note" name="note"></textarea>
+        <input type="submit" value="Add this book" id="sub"/>
+    </form>
+
+    
+</body>
+</html>
